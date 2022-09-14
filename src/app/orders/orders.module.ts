@@ -15,12 +15,7 @@ import { PageListOrdersComponent } from './pages/page-list-orders/page-list-orde
     PageAddOrderComponent,
     FormOrderComponent,
   ],
-  imports: [
-    CommonModule,
-    OrdersRoutingModule,
-    SharedModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, OrdersRoutingModule, SharedModule],
   providers: [],
 })
 export class OrdersModule {}

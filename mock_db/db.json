@@ -19,36 +19,16 @@
       "client": "M2i",
       "comment": null,
       "id": 2
-    },
-    {
-      "tjmHt": 1200,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "CANCELED",
-      "typePresta": "ddd",
-      "client": "xddd",
-      "comment": null,
-      "id": 3
-    },
-    {
-      "tjmHt": 1200,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "dsfgqdfg",
-      "client": "dfsg",
-      "comment": null,
-      "id": 4
     }
   ],
   "clients": [
     {
-      "state": "INACTIVE",
-      "tva": 20,
-      "totalCaHt": 120000,
-      "id": 1,
       "name": "Capgemini",
-      "comment": "un comment pour client modis"
+      "totalCaHt": 120000,
+      "tva": 20,
+      "state": "INACTIVE",
+      "comment": "un comment pour client modis",
+      "id": 1
     },
     {
       "state": "ACTIVE",
@@ -57,6 +37,14 @@
       "name": "Modis",
       "totalCaHt": 120000,
       "comment": "un comment pour client modis"
+    },
+    {
+      "name": "M2I",
+      "totalCaHt": 1000,
+      "tva": 20,
+      "state": "ACTIVE",
+      "comment": "xdfshg",
+      "id": 3
     }
   ]
 }

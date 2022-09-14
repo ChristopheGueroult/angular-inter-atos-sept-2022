@@ -8,6 +8,7 @@ import { TotalPipe } from './pipes/total.pipe';
 import { StateDirective } from './directives/state.directive';
 import { RouterModule } from '@angular/router';
 import { BtnActionComponent } from './components/btn-action/btn-action.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BtnActionComponent } from './components/btn-action/btn-action.component
     TotalPipe,
     StateDirective,
     BtnActionComponent,
+    ReactiveFormsModule
   ],
 })
 export class SharedModule {}

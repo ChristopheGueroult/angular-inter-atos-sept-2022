@@ -18,10 +18,13 @@ export class OrdersService extends ErrorHandler {
    * private collection property Observable
    */
   private collection$: Subject<Order[]> = new Subject<Order[]>();
+  // public collection2$!: Observable<Order[]>;
+
   private urlApi = environment.urlApi;
 
   constructor(private http: HttpClient) {
     super();
+    // this.collection2$ = this.http.get<Order[]>(`${this.urlApi}/orders`);
   }
   /**
    * refresh collection

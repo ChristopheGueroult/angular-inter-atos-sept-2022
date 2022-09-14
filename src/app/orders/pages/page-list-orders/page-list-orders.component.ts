@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
@@ -16,6 +16,7 @@ export class PageListOrdersComponent implements OnInit {
   public title = 'List Orders';
   public headers: string[];
   public collection$!: Subject<Order[]>;
+  // public collection2$!: Observable<Order[]>;
   public version$!: Subject<number>;
   constructor(
     private ordersService: OrdersService,
