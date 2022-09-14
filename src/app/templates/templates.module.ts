@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TemplateFullWidthComponent } from './components/template-full-width/template-full-width.component';
 import { TemplateContainerComponent } from './components/template-container/template-container.component';
 import { TemplateColsComponent } from './components/template-cols/template-cols.component';
+import { TemplateTestComponent } from './template-test/template-test.component';
 
 
 
@@ -10,7 +11,8 @@ import { TemplateColsComponent } from './components/template-cols/template-cols.
   declarations: [
     TemplateFullWidthComponent,
     TemplateContainerComponent,
-    TemplateColsComponent
+    TemplateColsComponent,
+    TemplateTestComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { TemplateColsComponent } from './components/template-cols/template-cols.
   exports: [
     TemplateFullWidthComponent,
     TemplateContainerComponent,
-    TemplateColsComponent
+    TemplateColsComponent,
+    TemplateTestComponent
   ]
 })
 export class TemplatesModule { }
