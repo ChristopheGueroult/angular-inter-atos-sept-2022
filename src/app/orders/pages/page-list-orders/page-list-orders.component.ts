@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
@@ -10,18 +15,20 @@ import { OrdersService } from '../../services/orders.service';
   selector: 'app-page-list-orders',
   templateUrl: './page-list-orders.component.html',
   styleUrls: ['./page-list-orders.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageListOrdersComponent implements OnInit {
   public states = Object.values(StateOrder);
   public title = 'List Orders';
   public headers: string[];
-  public collection$!: Subject<Order[]>;
-  // public collection2$!: Observable<Order[]>;
+  // public collection$!: Subject<Order[]>;
+  public collection!: Order[];
   public version$!: Subject<number>;
   constructor(
     private ordersService: OrdersService,
     private versionService: VersionService,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {
     this.headers = [
       'Action',
@@ -33,7 +40,11 @@ export class PageListOrdersComponent implements OnInit {
       'Total TTC',
       'State',
     ];
-    this.collection$ = this.ordersService.collection;
+    // this.collection$ = this.ordersService.collection;
+    this.ordersService.collection.subscribe((data) => {
+      this.collection = data;
+      this.cd.detectChanges();
+    });
     this.version$ = this.versionService.version;
   }
   ngOnInit(): void {}
@@ -50,5 +61,8 @@ export class PageListOrdersComponent implements OnInit {
   }
   public deleteItem(id: number): void {
     this.ordersService.delete(id).subscribe();
+  }
+  check() {
+    console.log('PAGE LIST ORDERS CHECK');
   }
 }

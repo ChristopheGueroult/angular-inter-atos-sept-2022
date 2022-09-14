@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { VersionService } from '../../services/version.service';
 
@@ -6,6 +6,7 @@ import { VersionService } from '../../services/version.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
   public version$: Subject<number>;
@@ -14,4 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  check() {
+    console.log('HEADER CHECK');
+  }
 }
