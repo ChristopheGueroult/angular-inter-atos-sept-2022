@@ -1,0 +1,12 @@
+.bandeau {
+  padding: 1.5rem;
+  background: var(--app-primary);
+  h1 {
+    font-size: var(--app-h1-fs);
+    color: var(--app-light);
+    margin: 0;
+    span {
+      font-size: var(--app-regular-fs);
+    }
+  }
+}
