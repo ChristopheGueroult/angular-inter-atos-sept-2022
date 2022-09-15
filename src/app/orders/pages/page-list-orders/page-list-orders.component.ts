@@ -11,6 +11,7 @@ import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
 import { OrdersService } from '../../services/orders.service';
+import { OrdersFacade } from '../../store/facades/orders.facades';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -22,14 +23,14 @@ export class PageListOrdersComponent implements OnInit {
   public states = Object.values(StateOrder);
   public title = 'list Orders';
   public headers: string[];
-  public collection$!: Subject<Order[]>;
-  // public collection!: Order[];
+  public collection$!: Observable<Order[]>;
   public version$!: Subject<number>;
   constructor(
     private ordersService: OrdersService,
     private versionService: VersionService,
     private router: Router,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private facades: OrdersFacade
   ) {
     this.headers = [
       'Action',
@@ -41,20 +42,17 @@ export class PageListOrdersComponent implements OnInit {
       'Total TTC',
       'State',
     ];
-    this.collection$ = this.ordersService.collection;
-    // this.ordersService.collection.subscribe((data) => {
-    //   this.collection = data;
-    //   this.cd.detectChanges();
-    // });
+    this.collection$ = this.facades.orders$;
+
     this.version$ = this.versionService.version;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.facades.loadOrders();
+  }
   public changeState(item: Order, event: Event): void {
     const target = event.target as HTMLSelectElement;
     const state = target.value as StateOrder;
-    this.ordersService.changeState(item, state).subscribe((data) => {
-      Object.assign(item, data);
-    });
+    this.facades.changeState(item, state);
   }
 
   public goToEdit(id: number): void {
