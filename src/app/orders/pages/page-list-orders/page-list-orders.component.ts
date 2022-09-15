@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  HostListener,
   OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,10 +20,10 @@ import { OrdersService } from '../../services/orders.service';
 })
 export class PageListOrdersComponent implements OnInit {
   public states = Object.values(StateOrder);
-  public title = 'List Orders';
+  public title = 'list Orders';
   public headers: string[];
-  // public collection$!: Subject<Order[]>;
-  public collection!: Order[];
+  public collection$!: Subject<Order[]>;
+  // public collection!: Order[];
   public version$!: Subject<number>;
   constructor(
     private ordersService: OrdersService,
@@ -40,11 +41,11 @@ export class PageListOrdersComponent implements OnInit {
       'Total TTC',
       'State',
     ];
-    // this.collection$ = this.ordersService.collection;
-    this.ordersService.collection.subscribe((data) => {
-      this.collection = data;
-      this.cd.detectChanges();
-    });
+    this.collection$ = this.ordersService.collection;
+    // this.ordersService.collection.subscribe((data) => {
+    //   this.collection = data;
+    //   this.cd.detectChanges();
+    // });
     this.version$ = this.versionService.version;
   }
   ngOnInit(): void {}
@@ -64,5 +65,9 @@ export class PageListOrdersComponent implements OnInit {
   }
   check() {
     console.log('PAGE LIST ORDERS CHECK');
+  }
+  @HostListener('window:scroll')
+  onScroll() {
+    console.log('scroll');
   }
 }
