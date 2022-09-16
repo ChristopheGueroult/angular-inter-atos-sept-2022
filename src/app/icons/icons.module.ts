@@ -5,6 +5,8 @@ import { IconCloseComponent } from './components/icon-close/icon-close.component
 import { IconDeleteComponent } from './components/icon-delete/icon-delete.component';
 import { IconEditComponent } from './components/icon-edit/icon-edit.component';
 import { IconNavComponent } from './components/icon-nav/icon-nav.component';
+import { IconEyeComponent } from './components/icon-eye/icon-eye.component';
+import { IconEyeSlashComponent } from './components/icon-eye-slash/icon-eye-slash.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,8 @@ import { IconNavComponent } from './components/icon-nav/icon-nav.component';
     IconNavComponent,
     IconDeleteComponent,
     IconEditComponent,
+    IconEyeComponent,
+    IconEyeSlashComponent,
   ],
   imports: [CommonModule, FontAwesomeModule],
   exports: [
@@ -19,6 +23,8 @@ import { IconNavComponent } from './components/icon-nav/icon-nav.component';
     IconNavComponent,
     IconDeleteComponent,
     IconEditComponent,
+    IconEyeComponent,
+    IconEyeSlashComponent,
   ],
 })
 export class IconsModule {}
