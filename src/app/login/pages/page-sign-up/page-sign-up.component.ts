@@ -12,6 +12,8 @@ export class PageSignUpComponent implements OnInit {
 
   ngOnInit(): void {}
   public signUp(item: any): void {
+    console.log(item);
+
     this.authService.signUp(item).subscribe(() => {
       this.router.navigate(['sign-in']);
     });

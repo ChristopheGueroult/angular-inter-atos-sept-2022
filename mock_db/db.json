@@ -1,6 +1,13 @@
 {
   "users": [
-
+    {
+      "email": "coderbaseit@gmail.com",
+      "password": "$2a$10$WiVNUFPSx2627MSCD35RhOH6dAXCuRkDis5UtGFTxLQF4IYVj7bO2",
+      "username": "christophe1",
+      "confirmedPassword": "bestPassw0rd",
+      "grants": "USER",
+      "id": 1
+    }
   ],
   "orders": [
     {

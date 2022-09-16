@@ -5,6 +5,7 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { PageForgotComponent } from './login/pages/page-forgot/page-forgot.component';
 import { PageResetComponent } from './login/pages/page-reset/page-reset.component';
 import { PageSignInComponent } from './login/pages/page-sign-in/page-sign-in.component';
@@ -16,11 +17,13 @@ const routes: Routes = [
     path: 'orders',
     loadChildren: () =>
       import('./orders/orders.module').then((m) => m.OrdersModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'clients',
     loadChildren: () =>
       import('./clients/clients.module').then((m) => m.ClientsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

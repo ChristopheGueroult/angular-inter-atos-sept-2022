@@ -26,7 +26,7 @@ export class AuthService {
    */
   public signIn(email: string, password: string): Observable<any> {
     return this.http
-      .post<any>(`${environment.urlApi}signin`, {
+      .post<any>(`${environment.urlApi}/login`, {
         email: email,
         password: password,
       })
@@ -62,6 +62,6 @@ export class AuthService {
 
   public signUp(item: any): Observable<any> {
     item.grants = StateUser.USER;
-    return this.http.post(`${environment.urlApi}users`, item);
+    return this.http.post(`${environment.urlApi}/users`, item);
   }
 }
