@@ -2,11 +2,12 @@ import { createReducer, on } from '@ngrx/store';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import * as ordersActions from '../actions/orders.actions';
+import { selectOrderById } from '../selectors/orders.selectors';
 
 export interface OrdersState {
   orders: Order[];
   error: any;
-  // selectedOrder: Order | null;
+  selectedOrder: Order | null;
 }
 
 export const initialOrderState: OrdersState = {
@@ -23,7 +24,7 @@ export const initialOrderState: OrdersState = {
     }),
   ],
   error: null,
-  // selectedOrder: null,
+  selectedOrder: null,
 };
 
 export const ordersFeatureKey = 'orders';
@@ -47,6 +48,25 @@ export const ordersReducer = createReducer(
         orders: state.orders.map((item) =>
           item.id !== order.id ? item : order
         ),
+        selectedOrder: null,
+      };
+    }
+  ),
+  on(
+    ordersActions.addOrderSuccessAction,
+    (state: OrdersState, { order }: { order: Order }): OrdersState => {
+      return {
+        ...state,
+        orders: [...state.orders, order],
+      };
+    }
+  ),
+  on(
+    ordersActions.getOrderByISuccessdAction,
+    (state: OrdersState, { order }: { order: Order }): OrdersState => {
+      return {
+        ...state,
+        selectedOrder: order,
       };
     }
   )

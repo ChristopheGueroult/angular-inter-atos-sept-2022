@@ -11,3 +11,10 @@ export const selectOrders = createSelector(
     return state.orders;
   }
 );
+// select order by id
+export const selectOrderById = createSelector(
+  selectOrdersFeature,
+  (state: OrdersState): Order | null => {
+    return state.selectedOrder;
+  }
+);

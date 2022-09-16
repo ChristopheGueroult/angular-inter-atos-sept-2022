@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { VersionService } from '../../services/version.service';
 
 @Component({
@@ -13,7 +14,12 @@ import { VersionService } from '../../services/version.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavComponent implements OnInit {
-  constructor(private versionService: VersionService) {}
+  public langs = ['fr', 'en'];
+  public defaultLang = this.translateService.getDefaultLang();
+  constructor(
+    private versionService: VersionService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {}
   public increment(): void {
@@ -21,5 +27,9 @@ export class NavComponent implements OnInit {
   }
   check() {
     console.log('NAV CHECK');
+  }
+  changeLang(event: any) {
+    const lang = event.target.value;
+    this.translateService.use(lang);
   }
 }

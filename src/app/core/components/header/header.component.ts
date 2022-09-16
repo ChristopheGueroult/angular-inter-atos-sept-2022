@@ -10,6 +10,7 @@ import { VersionService } from '../../services/version.service';
 })
 export class HeaderComponent implements OnInit {
   public version$: Subject<number>;
+  public company = { companyName: 'Atos' };
   constructor(private versionService: VersionService) {
     this.version$ = this.versionService.version;
   }

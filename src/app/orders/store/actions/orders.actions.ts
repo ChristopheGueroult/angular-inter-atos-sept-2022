@@ -15,8 +15,6 @@ export const getAllOrdersSuccessAction = createAction(
   props<{ orders: Order[] }>()
 );
 
-// action capted by an effect to call api and set item on orders collection
-
 // action capted by a ruducer to update item.state on OrdersState
 export const tryChangeStateOrderAction = createAction(
   '[Orders] try change state order',
@@ -30,20 +28,39 @@ export const updateOrderSuccessAction = createAction(
   props<{ order: Order }>()
 );
 
-// action capted by an effect to call api and update an item in orders collection
+// action capted by an effect to call api and add item in orders collection
 
-// action capted by a ruducer to update orders property in OrdersState
-
-// action capted by an effect to call api and delete an item in orders collection
-
-// action capted by a reducer to refresh orders collection in OrdersState
-
-// action capted by an effect to call api and get an item by id from orders collection
-
-// action capted by a reducer to add or update order property in OrdersState
-
+// action capted by a reducer to add order in OrdersState
+export const addOrderSuccessAction = createAction(
+  '[Orders] Add order',
+  props<{ order: Order }>()
+);
 // action to manage errors returned by api
 export const errorOrdersAction = createAction(
   '[Orders] error orders',
   props<{ error: any }>()
+);
+
+// try get order by id capted by effect
+export const tryGetOrderByIdAction = createAction(
+  '[ Orders ] try get order by id',
+  props<{ id: number }>()
+);
+
+// get order by id capted by reducer
+export const getOrderByISuccessdAction = createAction(
+  '[ Orders ] get order by id',
+  props<{ order: Order }>()
+);
+
+// try update order capted by effect
+export const tryUpdateOrderAction = createAction(
+  '[Orders] try update order',
+  props<{ order: Order }>()
+);
+
+// uptade order
+export const tryAddOrderAction = createAction(
+  '[Orders] try add order',
+  props<{ order: Order }>()
 );
